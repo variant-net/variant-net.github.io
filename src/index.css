@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-image: linear-gradient(to right bottom, #61ecd9, #51d7c8, #40c2b8, #30aea7, #1f9a96, #229898, #26959a, #2b939b, #42a2b0, #59b0c4, #70bfd8, #87ceeb);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +24,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
 h1 {
@@ -65,4 +62,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.css-isruha-MuiContainer-root {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
