@@ -28,7 +28,15 @@ const TeamMember: React.FC<TeamMemberProps> = ({
   personalWebsiteUrl,
 }) => {
   return (
-    <Card sx={{ width: 305, margin: "20px", textAlign: "center" }}>
+    <Card
+      sx={{
+        width: 305,
+        margin: "20px",
+        textAlign: "center",
+        border: "3px solid #008080", // Steel blue frame
+        borderRadius: "15px", // Rounded corners
+      }}
+    >
       <CardMedia
         component="img"
         height="210"

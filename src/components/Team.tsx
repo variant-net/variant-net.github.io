@@ -17,7 +17,7 @@ const MeetTheTeam = () => {
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
         <Box sx={{ flexGrow: 1 }} />
-          <Typography variant="h5" sx={{ flexGrow: 1 }}>
+          <Typography variant="h5" color="textSecondary" sx={{ flexGrow: 1 }}>
             variant-net
           </Typography>
         </Toolbar>
