@@ -3,34 +3,23 @@ import {
   Grid,
   Typography,
   Box,
-  AppBar,
-  Toolbar,
 } from "@mui/material";
 import TeamMember from "./TeamMember";
-import { supervisor, teamMembers } from "../TeamMembers";
+import { supervisor, teamMembers } from "../data/team-members";
 
 const MeetTheTeam = () => {
   return (
     <>
-      <Box mt={2} />
-      {/* AppBar for the top logo and title */}
-      <AppBar position="static" color="transparent" elevation={0}>
-        <Toolbar>
-        <Box sx={{ flexGrow: 1 }} />
-          <Typography variant="h5" color="textSecondary" sx={{ flexGrow: 1 }}>
-            variant-net
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Box mt={13} />
 
       {/* Main Content */}
       <Container>
         <Box mt={2} />
-        <Typography variant="h3" align="center" gutterBottom>
+        <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
           Meet The Team
         </Typography>
         <Box mt={10} />
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
           Supervisor
         </Typography>
         <Grid container justifyContent="center" spacing={4}>
@@ -39,8 +28,8 @@ const MeetTheTeam = () => {
           </Grid>
         </Grid>
         <Box mt={10} />
-        <Typography variant="h4" align="center" gutterBottom>
-          Team Members
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
+          Development Team
         </Typography>
         <Grid container justifyContent="center" spacing={4}>
           {teamMembers.map((member, index) => (
