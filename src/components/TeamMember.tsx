@@ -4,7 +4,7 @@ import {
   Typography,
   CardMedia,
   Box,
-  Link,
+  Link
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -33,7 +33,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         width: 305,
         margin: "20px",
         textAlign: "center",
-        border: "3px solid #008080", // Steel blue frame
+        border: "3px solid #808080", // Steel blue frame
         borderRadius: "15px", // Rounded corners
       }}
     >
@@ -61,12 +61,12 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         >
           {linkedInUrl && (
             <Link href={linkedInUrl} target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon fontSize="large" sx={{ color: "#0077B5" }} />
+              <LinkedInIcon fontSize="large" sx={{ color: "#808080" }} />
             </Link>
           )}
           {githubUrl && (
             <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <GitHubIcon fontSize="large" sx={{ color: "#333" }} />
+              <GitHubIcon fontSize="large" sx={{ color: "#808080" }} />
             </Link>
           )}
           {personalWebsiteUrl && (
@@ -75,7 +75,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LanguageIcon fontSize="large" sx={{ color: "#4682B4" }} />
+              <LanguageIcon fontSize="large" sx={{ color: "#808080" }} />
             </Link>
           )}
         </Box>

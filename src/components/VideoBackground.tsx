@@ -21,8 +21,8 @@ const VideoBackground = () => {
       {/* Background Video */}
       <video
         autoPlay
-        loop
         muted
+        onEnded={scrollToNextSection}
         style={{
           position: "absolute",
           top: "50%",

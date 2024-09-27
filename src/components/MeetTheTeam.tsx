@@ -10,9 +10,7 @@ import { supervisor, teamMembers } from "../data/team-members";
 const MeetTheTeam = () => {
   return (
     <>
-      <Box mt={13} />
-
-      {/* Main Content */}
+      <Box mt={12} />
       <Container>
         <Box mt={2} />
         <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
@@ -39,14 +37,7 @@ const MeetTheTeam = () => {
           ))}
         </Grid>
       </Container>
-
-      <Box mt={12} />
-      {/* Footer */}
-      <Box component="footer" sx={{ py: 3, mt: 5 }}>
-        <Typography variant="body2" color="textSecondary" align="center">
-          © {new Date().getFullYear()} variant-net. All rights reserved.
-        </Typography>
-      </Box>
+      <Box mt={16} />
     </>
   );
 };

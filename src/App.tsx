@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import MeetTheTeam from "./components/Team";
 import VideoBackground from "./components/VideoBackground";
+import ProjectOverview from "./components/ProjectOverview";
+import MeetTheTeam from "./components/MeetTheTeam";
+import Footer from "./components/Footer";
 //import "./App.css";
 
 function App() {
@@ -9,7 +11,9 @@ function App() {
       <Route path="/" element={
         <>
           <VideoBackground />
+          <ProjectOverview />
           <MeetTheTeam />
+          <Footer />
         </>
       } />
       <Route path="/no-style" element={null} />
