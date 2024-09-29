@@ -9,6 +9,7 @@ const ProjectOverview: React.FC = () => {
         backgroundColor: "#F0F0F0", // soft gray
         padding: "20%",
         textAlign: "center",
+        borderTop: "2px solid #E0E0E0",
       }}
     >
       <Typography

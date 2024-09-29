@@ -9,7 +9,7 @@ const Footer = () => {
         backgroundColor: "#F0F0F0", // Soft gray background
         padding: "40px 20px",
         mt: "auto",
-        borderTop: "1px solid #E0E0E0",
+        borderTop: "2px solid #E0E0E0",
       }}
     >
       <Box mt={4} />
