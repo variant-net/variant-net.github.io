@@ -31,6 +31,7 @@ const About: React.FC = () => {
           position: "absolute",
           top: "50%",
           left: "50%",
+          zIndex: 0, // Ensure the image is behind the text
           transform: "translate(-50%, -50%)", // Center the image
           opacity: 0.1, // Make the image more subtle
         }}

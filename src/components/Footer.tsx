@@ -1,5 +1,4 @@
-import { Box, Grid, Typography, Link, IconButton } from "@mui/material";
-import { GitHub } from "@mui/icons-material";
+import { Box, Grid, Typography, Link } from "@mui/material";
 import Divider from "@mui/material/Divider";
 
 const Footer = () => {
@@ -25,19 +24,7 @@ const Footer = () => {
           </Typography>
           {/* Social Media Icons */}
           <Box display="flex" justifyContent="left" mt={2}>
-            <IconButton
-              href="https://github.com/orgs/variant-net/repositories"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                color: "#808080",
-                "&:hover": {
-                  color: "#008080", // teal blue on hover
-                },
-              }}
-            >
-              <GitHub />
-            </IconButton>
+            <img src="https://profile-counter.glitch.me/variant-net/count.svg" alt="Visitor Counter" />
           </Box>
         </Grid>
         {/* Middle section - Links */}
@@ -51,22 +38,22 @@ const Footer = () => {
             Company
           </Typography>
           <Typography variant="body2">
-            <Link href="/about" color="textPrimary" underline="hover">
+            <Link href="/#/about" color="textPrimary" underline="hover">
               About
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/features" color="textPrimary" underline="hover">
+            <Link href="/#/features" color="textPrimary" underline="hover">
               Features
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/works" color="textPrimary" underline="hover">
+            <Link href="/#/works" color="textPrimary" underline="hover">
               Works
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/careers" color="textPrimary" underline="hover">
+            <Link href="/#/careers" color="textPrimary" underline="hover">
               Career
             </Link>
           </Typography>
@@ -82,22 +69,22 @@ const Footer = () => {
             Help
           </Typography>
           <Typography variant="body2">
-            <Link href="/support" color="textPrimary" underline="hover">
+            <Link href="/#/support" color="textPrimary" underline="hover">
               Customer Support
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/delivery" color="textPrimary" underline="hover">
+            <Link href="/#/delivery" color="textPrimary" underline="hover">
               Delivery Details
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/terms" color="textPrimary" underline="hover">
+            <Link href="/#/terms" color="textPrimary" underline="hover">
               Terms & Conditions
             </Link>
           </Typography>
           <Typography variant="body2">
-            <Link href="/privacy" color="textPrimary" underline="hover">
+            <Link href="/#/privacy" color="textPrimary" underline="hover">
               Privacy Policy
             </Link>
           </Typography>
