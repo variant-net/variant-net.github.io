@@ -63,7 +63,16 @@ const MeetTheTeam = () => {
                   overflow: "hidden",
                 }}
               >
-                <TeamMember {...supervisor} />
+                <TeamMember
+                  {...supervisor}
+                  sx={{
+                    width: 305,
+                    margin: "20px",
+                    textAlign: "center",
+                    border: "3px solid white", // Steel blue frame
+                    borderRadius: "15px", // Rounded corners
+                  }}
+                />
               </Box>
             </Grid>
           </Grid>
@@ -103,7 +112,16 @@ const MeetTheTeam = () => {
                     overflow: "hidden",
                   }}
                 >
-                  <TeamMember {...member} />
+                  <TeamMember
+                    {...member}
+                    sx={{
+                      width: 305,
+                      margin: "20px",
+                      textAlign: "center",
+                      border: "3px solid white", // Steel blue frame
+                      borderRadius: "15px", // Rounded corners
+                    }}
+                  />
                 </Box>
               </Grid>
             ))}

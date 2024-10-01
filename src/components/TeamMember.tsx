@@ -19,6 +19,7 @@ interface TeamMemberProps {
   linkedInUrl?: string;
   githubUrl?: string;
   personalWebsiteUrl?: string;
+  sx?: object;
 }
 
 const TeamMember: React.FC<TeamMemberProps> = ({
@@ -29,6 +30,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
   linkedInUrl,
   githubUrl,
   personalWebsiteUrl,
+  sx,
 }) => {
   const navigate = useNavigate();
 
@@ -39,13 +41,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
           navigate(`/logbooks?member=${name}`);
         }
       }}
-      sx={{
-        width: 305,
-        margin: "20px",
-        textAlign: "center",
-        border: "3px solid white", // Steel blue frame
-        borderRadius: "15px", // Rounded corners
-      }}
+      sx={sx}
     >
       <CardMedia
         component="img"

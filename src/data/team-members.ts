@@ -1,4 +1,4 @@
-import Arda from "../assets/images/photo-of-arda.jpeg";
+import Arda from "../assets/images/photo-of-arda.jpg";
 import Berke from "../assets/images/photo-of-berke.jpeg";
 import Mert from "../assets/images/photo-of-mert.jpeg";
 import Ercu from "../assets/images/photo-of-ercu.jpeg";
@@ -26,6 +26,7 @@ const teamMembers = [
     name: "Arda İynem",
     role: "student",
     image: Arda,
+    imagePosition: "center",
     linkedInUrl: "https://www.linkedin.com/in/ardaiynem/",
     githubUrl: "https://github.com/ardaiynem",
     personalWebsiteUrl: "",

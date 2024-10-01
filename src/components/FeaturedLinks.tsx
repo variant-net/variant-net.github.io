@@ -49,6 +49,7 @@ const FeaturedLinks = () => {
             fullWidth
             sx={{
               justifyContent: "space-between",
+              backgroundColor: "white",
               borderRadius: "30px",
               padding: "10px 20px",
               textTransform: "none",
@@ -65,7 +66,7 @@ const FeaturedLinks = () => {
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <IconButton
                 sx={{
-                  backgroundColor: "#f0f0f0",
+                  backgroundColor: "white",
                   mr: 2,
                 }}
               >
