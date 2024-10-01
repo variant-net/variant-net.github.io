@@ -36,7 +36,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({
     <Card
       onClick={() => {
         if (role === "student") {
-          navigate(`/logbooks/${name}`);
+          navigate(`/logbooks?member=${name}`);
         }
       }}
       sx={{
