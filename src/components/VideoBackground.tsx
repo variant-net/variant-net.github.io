@@ -1,6 +1,6 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import dna_video from "../assets/videos/dna-bg.mp4";
+import dnaVideoBg from "../assets/videos/dna-bg.mp4";
 
 const VideoBackground = () => {
   const scrollToNextSectionAuto = () => {
@@ -39,7 +39,7 @@ const VideoBackground = () => {
           zIndex: "-1",
         }}
       >
-        <source src={dna_video} type="video/mp4" />
+        <source src={dnaVideoBg} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -71,6 +71,7 @@ const VideoBackground = () => {
           transform: "translateX(-50%)",
           textAlign: "center",
           color: "white",
+          opacity: 0.6,
         }}
       >
         <Typography>Scroll Down</Typography>
@@ -81,7 +82,7 @@ const VideoBackground = () => {
               behavior: "smooth",
             });
           }}
-          sx={{ color: "white" }}
+          sx={{ color: "white", opacity: 0.6 }}
         >
           <ArrowDownwardIcon fontSize="large" />
         </IconButton>

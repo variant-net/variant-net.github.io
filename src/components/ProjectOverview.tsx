@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Typography, IconButton } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
+import { Box, Typography } from "@mui/material";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const ProjectOverview: React.FC = () => {
   return (
@@ -36,28 +36,16 @@ const ProjectOverview: React.FC = () => {
         <strong>
           variant-net is a tool designed to assist geneticists and medical
           professionals in diagnosing genetic conditions by analyzing patient
-          DNA sequences alongside with phenotypic data. This project is part of the
-          CS491/2 Senior Design Project at Bilkent University, aiming to provide
-          an accessible and efficient AI-powered solution to streamline genetic
-          diagnosis.
+          DNA sequences alongside with phenotypic data. This project is part of
+          the CS491/2 Senior Design Project at Bilkent University, aiming to
+          provide an accessible and efficient AI-powered solution to streamline
+          genetic diagnosis.
         </strong>
       </Typography>
 
       {/* GitHub Icon Button */}
       <Box mt={3}>
-        <IconButton
-          href="https://github.com/variant-net" // replace with actual GitHub link
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            color: "#808080",
-            "&:hover": {
-              color: "#008080", // teal blue on hover
-            },
-          }} // grey color
-        >
-          <GitHubIcon fontSize="large" />
-        </IconButton>
+        <AutoAwesomeIcon fontSize="large" sx={{ color: "#008080" }} />
       </Box>
     </Box>
   );

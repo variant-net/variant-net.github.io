@@ -1,6 +1,6 @@
-import { Box, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const NotFound = () => {
     }, 1000); // Decrease countdown every second
 
     const redirectTimeout = setTimeout(() => {
-      navigate('/');
+      navigate("/");
     }, 10000); // Redirect after 10 seconds
 
     return () => {
@@ -22,22 +22,22 @@ const NotFound = () => {
   }, [navigate]);
 
   return (
-    <Box 
+    <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        textAlign: 'center',
-        flexDirection: 'column',
-        backgroundColor: '#F0F0F0',
-        color: '#008080',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        textAlign: "center",
+        flexDirection: "column",
+        backgroundColor: "#F0F0F0",
+        color: "#008080",
       }}
     >
-      <Typography variant="h1" sx={{ fontSize: '72px', fontWeight: 'bold' }}>
+      <Typography variant="h1" sx={{ fontSize: "72px", fontWeight: "bold" }}>
         404
       </Typography>
-      <Typography variant="h6" sx={{ marginBottom: '16px' }}>
+      <Typography variant="h6" sx={{ marginBottom: "16px" }}>
         <strong>
           Oops! It seems the page you're looking for doesn't exist.
         </strong>
@@ -47,6 +47,6 @@ const NotFound = () => {
       </Typography>
     </Box>
   );
-}
+};
 
 export default NotFound;

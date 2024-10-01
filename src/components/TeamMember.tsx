@@ -4,14 +4,16 @@ import {
   Typography,
   CardMedia,
   Box,
-  Link
+  Link,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LanguageIcon from "@mui/icons-material/Language";
+import { useNavigate } from "react-router-dom";
 
 interface TeamMemberProps {
   name: string;
+  role: string;
   image: string;
   imagePosition?: string;
   linkedInUrl?: string;
@@ -21,14 +23,22 @@ interface TeamMemberProps {
 
 const TeamMember: React.FC<TeamMemberProps> = ({
   name,
+  role,
   image,
   imagePosition,
   linkedInUrl,
   githubUrl,
   personalWebsiteUrl,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <Card
+      onClick={() => {
+        if (role === "student") {
+          navigate(`/logbooks/${name}`);
+        }
+      }}
       sx={{
         width: 305,
         margin: "20px",
@@ -61,12 +71,18 @@ const TeamMember: React.FC<TeamMemberProps> = ({
         >
           {linkedInUrl && (
             <Link href={linkedInUrl} target="_blank" rel="noopener noreferrer">
-              <LinkedInIcon fontSize="large" sx={{ color: "rgb(240, 199, 171)" }} />
+              <LinkedInIcon
+                fontSize="large"
+                sx={{ color: "rgb(240, 199, 171)" }}
+              />
             </Link>
           )}
           {githubUrl && (
             <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <GitHubIcon fontSize="large" sx={{ color: "rgb(240, 199, 171)" }} />
+              <GitHubIcon
+                fontSize="large"
+                sx={{ color: "rgb(240, 199, 171)" }}
+              />
             </Link>
           )}
           {personalWebsiteUrl && (
@@ -75,7 +91,10 @@ const TeamMember: React.FC<TeamMemberProps> = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              <LanguageIcon fontSize="large" sx={{ color: "rgb(240, 199, 171)" }} />
+              <LanguageIcon
+                fontSize="large"
+                sx={{ color: "rgb(240, 199, 171)" }}
+              />
             </Link>
           )}
         </Box>

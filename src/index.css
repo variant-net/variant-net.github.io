@@ -6,7 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   /*background-image: linear-gradient(to right bottom, #61ecd9, #51d7c8, #40c2b8, #30aea7, #1f9a96, #229898, #26959a, #2b939b, #42a2b0, #59b0c4, #70bfd8, #87ceeb);*/
-  background-color: "#F0F0F0" !important;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,7 +25,6 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-  background-color: "#F0F0F0" !important;
 }
 
 h1 {

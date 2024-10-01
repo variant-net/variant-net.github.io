@@ -1,11 +1,5 @@
 const files = [
   {
-    name: "Logbook",
-    added: "",
-    size: "",
-    link: "",
-  },
-  {
     name: "Project Information Form Guideline",
     added: "",
     size: "",

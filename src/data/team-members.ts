@@ -1,13 +1,14 @@
-import Arda2 from "../assets/images/photo-of-arda.jpeg";
+import Arda from "../assets/images/photo-of-arda.jpeg";
 import Berke from "../assets/images/photo-of-berke.jpeg";
 import Mert from "../assets/images/photo-of-mert.jpeg";
 import Ercu from "../assets/images/photo-of-ercu.jpeg";
-import Deniz2 from "../assets/images/photo-of-deniz.jpeg";
+import Deniz from "../assets/images/photo-of-deniz.jpeg";
 import Ege from "../assets/images/photo-of-ege.jpeg";
 
 const teamMembers = [
   {
     name: "Ahmet Berke Gökmen",
+    role: "student",
     image: Berke,
     linkedInUrl: "https://www.linkedin.com/in/berkegokmen/",
     githubUrl: "https://github.com/berkegokmen1",
@@ -15,6 +16,7 @@ const teamMembers = [
   },
   {
     name: "Mert Gençtürk",
+    role: "student",
     image: Mert,
     linkedInUrl: "https://www.linkedin.com/in/mert-gençtürk-339864186/",
     githubUrl: "https://github.com/gencturkmert",
@@ -22,14 +24,16 @@ const teamMembers = [
   },
   {
     name: "Arda İynem",
-    image: Arda2,
+    role: "student",
+    image: Arda,
     linkedInUrl: "https://www.linkedin.com/in/ardaiynem/",
     githubUrl: "https://github.com/ardaiynem",
     personalWebsiteUrl: "",
   },
   {
     name: "Deniz Tuna Onguner",
-    image: Deniz2,
+    role: "student",
+    image: Deniz,
     imagePosition: "center",
     linkedInUrl: "https://www.linkedin.com/in/tuna-onguner/",
     githubUrl: "https://github.com/Tuna-Onguner",
@@ -37,6 +41,7 @@ const teamMembers = [
   },
   {
     name: "Hasan Ege Tunç",
+    role: "student",
     image: Ege,
     linkedInUrl: "",
     githubUrl: "https://github.com/HEgeTunc",
@@ -46,6 +51,7 @@ const teamMembers = [
 
 const supervisor = {
   name: "A. Ercüment Çiçek",
+  role: "supervisor",
   image: Ercu,
   imagePosition: "center",
   linkedInUrl: "https://www.linkedin.com/in/ercumentcicek/",

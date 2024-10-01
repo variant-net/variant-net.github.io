@@ -1,5 +1,5 @@
-import { Typography as TypographyMaterial } from "@mui/material";
-import { Typography as TypographyJoy } from "@mui/joy";
+import { Typography as TypographyOfMaterial } from "@mui/material";
+import { Typography as TypographyOfJoy } from "@mui/joy";
 import Table from "@mui/joy/Table";
 import IconButton from "@mui/joy/IconButton";
 import Box from "@mui/joy/Box";
@@ -17,15 +17,15 @@ const Deliverables = () => {
         borderBottom: "2px solid #E0E0E0",
       }}
     >
-      <TypographyMaterial
-        variant="h2"
+      <TypographyOfMaterial
+        variant="h3"
         component="h2"
         gutterBottom
         sx={{ color: "#008080", fontWeight: "bold", textAlign: "center" }} // teal blue
       >
         The Deliverables
-      </TypographyMaterial>
-      <TypographyMaterial
+      </TypographyOfMaterial>
+      <TypographyOfMaterial
         variant="body1"
         sx={{
           color: "#333",
@@ -39,7 +39,7 @@ const Deliverables = () => {
           The deliverables for the project will be uploaded here as they become
           available.
         </strong>
-      </TypographyMaterial>
+      </TypographyOfMaterial>
       <Table
         hoverRow
         size="sm"
@@ -54,16 +54,16 @@ const Deliverables = () => {
         <thead>
           <tr>
             <th>
-              <TypographyJoy level="title-sm">File</TypographyJoy>
+              <TypographyOfJoy level="title-sm">File</TypographyOfJoy>
             </th>
             <th style={{ textAlign: "right" }}>
-              <TypographyJoy level="title-sm">Added at</TypographyJoy>
+              <TypographyOfJoy level="title-sm">Added at</TypographyOfJoy>
             </th>
             <th style={{ textAlign: "right" }}>
-              <TypographyJoy level="title-sm">Size</TypographyJoy>
+              <TypographyOfJoy level="title-sm">Size</TypographyOfJoy>
             </th>
             <th style={{ textAlign: "right" }}>
-              <TypographyJoy level="title-sm">Download</TypographyJoy>
+              <TypographyOfJoy level="title-sm">Download</TypographyOfJoy>
             </th>
           </tr>
         </thead>
@@ -71,18 +71,18 @@ const Deliverables = () => {
           {files.map((file, index) => (
             <tr key={index}>
               <td>
-                <TypographyJoy
+                <TypographyOfJoy
                   level="title-sm"
                   sx={{ alignItems: "end", display: "flex" }}
                 >
                   {file.name}
-                </TypographyJoy>
+                </TypographyOfJoy>
               </td>
               <td style={{ textAlign: "right" }}>
-                <TypographyJoy level="body-sm">{file.added}</TypographyJoy>
+                <TypographyOfJoy level="body-sm">{file.added}</TypographyOfJoy>
               </td>
               <td style={{ textAlign: "right" }}>
-                <TypographyJoy level="body-sm">{file.size}</TypographyJoy>
+                <TypographyOfJoy level="body-sm">{file.size}</TypographyOfJoy>
               </td>
               <td style={{ textAlign: "right" }}>
                 {file.link && (

@@ -1,14 +1,14 @@
 import { Container, Grid, Typography, Box } from "@mui/material";
 import { supervisor, teamMembers } from "../data/team-members";
 import TeamMember from "./TeamMember";
-import cs from "../assets/bg/cs.jpeg";
+import nodesImageBg from "../assets/bg/nodes-bg.jpeg";
 
 const MeetTheTeam = () => {
   return (
     <>
       <Box
         sx={{
-          backgroundImage: `url(${cs})`,
+          backgroundImage: `url(${nodesImageBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           pt: 20,
