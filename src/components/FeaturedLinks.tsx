@@ -4,6 +4,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import PublicIcon from "@mui/icons-material/Public";
 
+import { teamMembers } from "../data/team-members";
+
 const links = [
   {
     text: "GitHub Repository",
@@ -12,7 +14,7 @@ const links = [
   },
   {
     text: "Student Logbooks",
-    link: "/#/logbooks",
+    link: `/#/logbooks?member=${teamMembers[0].name}`,
     icon: <LibraryBooksIcon />,
   },
   {

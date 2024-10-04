@@ -8,6 +8,7 @@ import Ege from "../assets/images/photo-of-ege.jpeg";
 const teamMembers = [
   {
     name: "Ahmet Berke Gökmen",
+    username: "berke.gokmen",
     role: "student",
     image: Berke,
     linkedInUrl: "https://www.linkedin.com/in/berkegokmen/",
@@ -16,6 +17,7 @@ const teamMembers = [
   },
   {
     name: "Mert Gençtürk",
+    username: "mert.gencturk",
     role: "student",
     image: Mert,
     linkedInUrl: "https://www.linkedin.com/in/mert-gençtürk-339864186/",
@@ -24,6 +26,7 @@ const teamMembers = [
   },
   {
     name: "Arda İynem",
+    username: "arda.iynem",
     role: "student",
     image: Arda,
     imagePosition: "center",
@@ -33,6 +36,7 @@ const teamMembers = [
   },
   {
     name: "Deniz Tuna Onguner",
+    username: "tuna.onguner",
     role: "student",
     image: Deniz,
     imagePosition: "center",
@@ -42,6 +46,7 @@ const teamMembers = [
   },
   {
     name: "Hasan Ege Tunç",
+    username: "hasan.tunc",
     role: "student",
     image: Ege,
     linkedInUrl: "",
@@ -52,6 +57,7 @@ const teamMembers = [
 
 const supervisor = {
   name: "A. Ercüment Çiçek",
+  username: "ercument.cicek",
   role: "supervisor",
   image: Ercu,
   imagePosition: "center",

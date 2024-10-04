@@ -12,10 +12,17 @@ import {
   Button,
   Popover,
   IconButton,
+  TextField,
 } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import InfoIcon from "@mui/icons-material/Info";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from '@mui/icons-material/Close';
+
+import LogbookEntries from "./LogbookEntries";
+import { auth, db } from "../firebase";
+import { addDoc, collection, Timestamp } from "firebase/firestore";
 
 import TeamMember from "./TeamMember";
 import { teamMembers } from "../data/team-members"; // Assuming you have an array of students
@@ -31,6 +38,9 @@ const Logbooks = () => {
   );
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [newEntryOpen, setNewEntryOpen] = useState(false);
+  const [titleValue, setTitleValue] = useState("");
+  const [contentValue, setContentValue] = useState("");
 
   const handleMemberClick = (member: (typeof teamMembers)[0]) => {
     setSelectedMember(member);
@@ -43,6 +53,27 @@ const Logbooks = () => {
 
   const handlePopoverClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleNewEntryToggle = () => {
+    setNewEntryOpen((prev) => !prev);
+  };
+
+  const addLogbookEntry = async (
+    memberName: string,
+    date: Timestamp,
+    title: string,
+    content: string
+  ) => {
+    try {
+      await addDoc(collection(db, "logbooks", memberName, "logbook-entries"), {
+        date,
+        title,
+        content,
+      });
+    } catch (error) {
+      console.error("Error adding logbook entry: ", error);
+    }
   };
 
   const open = Boolean(anchorEl);
@@ -176,19 +207,109 @@ const Logbooks = () => {
             <InfoIcon />
           </IconButton>
         </Typography>
-        {/* Render the student's logbook content */}
-        <Typography
-          variant="body1"
-          sx={{
-            bgcolor: "#FFFFFF", // White background for content
-            p: 2,
-            borderRadius: 2,
-            boxShadow: 1,
-            color: "#000",
-          }}
-        >
-          The logbooks will be uploaded here as they become available.
-        </Typography>
+
+        {selectedMember.username === auth.currentUser?.email?.split("@")[0] &&
+          newEntryOpen && (
+            <>
+              <Box
+                sx={{
+                  mt: 2,
+                  mb: 7,
+                  bgcolor: "#fff",
+                  p: 3,
+                  borderRadius: 2,
+                  border: "2px solid #008080",
+                  boxShadow: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "left",
+                  gap: 2,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between", // Add this line
+                    gap: 2,
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{ color: "#008080", fontWeight: "bold" }}
+                  >
+                    New Logbook Entry
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    onClick={handleNewEntryToggle}
+                    sx={{
+                      bgcolor: "#FF0000",
+                      color: "#fff",
+                      "&:hover": {
+                        bgcolor: "#FF3333",
+                      },
+                      opacity: 0.9,
+                    }}
+                  >
+                    <CloseIcon />
+                  </Button>
+                </Box>
+                <TextField
+                  key="title"
+                  variant="standard"
+                  value={titleValue}
+                  onChange={(e) => setTitleValue(e.target.value)}
+                  placeholder="Enter the title here..."
+                  sx={{
+                    width: 300,
+                  }}
+                />
+                <TextField
+                  key="content"
+                  variant="standard"
+                  value={contentValue}
+                  onChange={(e) => setContentValue(e.target.value)}
+                  placeholder="Enter your entry here..."
+                  fullWidth
+                  multiline
+                  sx={{
+                    marginBottom: 2,
+                  }}
+                />
+                <>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "right",
+                    }}
+                  >
+                    <Button
+                      onClick={() =>
+                        addLogbookEntry(
+                          selectedMember.username,
+                          Timestamp.now(),
+                          titleValue,
+                          contentValue
+                        )
+                      }
+                      variant="contained"
+                      sx={{
+                        mt: 2,
+                        bgcolor: "#008080",
+                        width: 180,
+                        "&:hover": { bgcolor: "#006666" },
+                      }}
+                    >
+                      Log Entry
+                    </Button>
+                  </Box>
+                </>
+              </Box>
+            </>
+          )}
+
+        <LogbookEntries memberName={selectedMember.username} />
 
         <Popover
           id={id}
@@ -219,6 +340,23 @@ const Logbooks = () => {
             }}
           />
         </Popover>
+        {selectedMember.username === auth.currentUser?.email?.split("@")[0] &&
+          !newEntryOpen && (
+            <Button
+              variant="contained"
+              onClick={handleNewEntryToggle}
+              startIcon={<AddIcon />}
+              size="large"
+              sx={{
+                position: "absolute",
+                top: 40,
+                right: 40,
+                bgcolor: "#008080",
+              }}
+            >
+              New Entry
+            </Button>
+          )}
       </Box>
     </Box>
   );
