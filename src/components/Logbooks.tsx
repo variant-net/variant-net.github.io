@@ -18,10 +18,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import InfoIcon from "@mui/icons-material/Info";
 import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 import LogbookEntries from "./LogbookEntries";
+
 import { auth, db } from "../firebase";
+import { signOut } from "firebase/auth";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 
 import TeamMember from "./TeamMember";
@@ -41,6 +43,7 @@ const Logbooks = () => {
   const [newEntryOpen, setNewEntryOpen] = useState(false);
   const [titleValue, setTitleValue] = useState("");
   const [contentValue, setContentValue] = useState("");
+  const [seed, setSeed] = useState(Math.random());
 
   const handleMemberClick = (member: (typeof teamMembers)[0]) => {
     setSelectedMember(member);
@@ -57,6 +60,10 @@ const Logbooks = () => {
 
   const handleNewEntryToggle = () => {
     setNewEntryOpen((prev) => !prev);
+  };
+
+  const reset = () => {
+    setSeed(Math.random());
   };
 
   const addLogbookEntry = async (
@@ -80,7 +87,14 @@ const Logbooks = () => {
   const id = open ? "simple-popover" : undefined;
 
   return (
-    <Box sx={{ display: "flex", height: "100vh", bgcolor: "#F0F0F0" }}>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        bgcolor: "#F0F0F0",
+        overflow: "auto",
+      }}
+    >
       {/* Sidebar */}
       <Drawer
         variant="permanent"
@@ -172,7 +186,10 @@ const Logbooks = () => {
         >
           <Button
             variant="contained"
-            onClick={() => navigate("/")}
+            onClick={async () => {
+              await signOut(auth);
+              navigate("/");
+            }}
             startIcon={<HomeIcon />}
             sx={{
               bgcolor: "#008080",
@@ -242,6 +259,7 @@ const Logbooks = () => {
                   </Typography>
                   <Button
                     variant="contained"
+                    startIcon={<CloseIcon />}
                     onClick={handleNewEntryToggle}
                     sx={{
                       bgcolor: "#FF0000",
@@ -252,7 +270,7 @@ const Logbooks = () => {
                       opacity: 0.9,
                     }}
                   >
-                    <CloseIcon />
+                    Discard
                   </Button>
                 </Box>
                 <TextField
@@ -285,14 +303,18 @@ const Logbooks = () => {
                     }}
                   >
                     <Button
-                      onClick={() =>
-                        addLogbookEntry(
+                      onClick={async () => {
+                        handleNewEntryToggle();
+                        await addLogbookEntry(
                           selectedMember.username,
                           Timestamp.now(),
                           titleValue,
                           contentValue
-                        )
-                      }
+                        );
+                        reset();
+                        setTitleValue("");
+                        setContentValue("");
+                      }}
                       variant="contained"
                       sx={{
                         mt: 2,
@@ -309,7 +331,11 @@ const Logbooks = () => {
             </>
           )}
 
-        <LogbookEntries memberName={selectedMember.username} />
+        <LogbookEntries
+          key={seed}
+          memberName={selectedMember.username}
+          reset={reset}
+        />
 
         <Popover
           id={id}

@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   const handleLogout = async () => {
     await signOut(auth); // Sign out the user using Firebase Authentication
-    navigate("/login"); // Redirect to login after logging out
+    navigate("/login"); // Redirect the user to the login
   };
 
   // Log out the user after 10 minutes (600000 ms) of inactivity
