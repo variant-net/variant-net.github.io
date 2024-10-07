@@ -11,8 +11,8 @@ const Deliverables = () => {
     <Box
       sx={{
         margin: "auto",
-        paddingX: "20rem",
-        paddingBottom: "20rem",
+        paddingX: "20%",
+        paddingBottom: "20%",
         backgroundColor: "#F0F0F0",
         borderBottom: "2px solid #E0E0E0",
       }}
@@ -46,8 +46,8 @@ const Deliverables = () => {
         borderAxis="none"
         variant="soft"
         sx={{
-          "--TableCell-paddingX": "1rem",
-          "--TableCell-paddingY": "1rem",
+          "--TableCell-paddingX": "1%",
+          "--TableCell-paddingY": "1%",
           border: "2px solid #E0E0E0",
         }}
       >
@@ -91,7 +91,7 @@ const Deliverables = () => {
                     color="neutral"
                     component="a"
                     href={file.link}
-                    download
+                    download={file.link}
                   >
                     <GetAppIcon fontSize="small" />
                   </IconButton>

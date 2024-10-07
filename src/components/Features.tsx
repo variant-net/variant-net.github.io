@@ -59,8 +59,8 @@ const FeatureCards = () => {
   return (
     <Box
       sx={{
-        paddingBottom: "20rem",
-        paddingX: "20rem",
+        paddingBottom: "20%",
+        paddingX: "20%",
         backgroundColor: "#F0F0F0",
         textAlign: "center",
       }}

@@ -11,8 +11,8 @@ const MeetTheTeam = () => {
           backgroundImage: `url(${nodesImageBg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          pt: 20,
-          pb: 20,
+          pt: "20%",
+          pb: "10%",
         }}
       >
         <Container>
@@ -48,6 +48,8 @@ const MeetTheTeam = () => {
           </Typography>
           <Grid container justifyContent="center" spacing={4}>
             <Grid
+              container
+              justifyContent={"center"}
               item
               xs={12}
               sm={6}
@@ -96,6 +98,8 @@ const MeetTheTeam = () => {
           <Grid container justifyContent="center" spacing={4}>
             {teamMembers.map((member, index) => (
               <Grid
+                container
+                justifyContent={"center"}
                 item
                 key={index}
                 xs={12}

@@ -1,0 +1,32 @@
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* Responsive grid layout */
+  gap: 3%; /* Space between grid items */
+  justify-items: center; /* Center items in grid */
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden; /* Crop overflow content */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Animation on hover */
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners */
+  transition: transform 0.3s ease; /* Animation on hover */
+  border: 2px solid transparent; /* Border around image */
+}
+
+.gallery-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.gallery-image:hover {
+  filter: brightness(90%); /* Darken image slightly on hover */
+}

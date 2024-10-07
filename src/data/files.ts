@@ -1,18 +1,18 @@
 const files = [
   {
-    name: "Project Information Form Guideline",
+    name: "Project Information Form",
+    added: "Oct 7 2024",
+    size: "49 KB",
+    link: "../assets/deliverables/BestSeniorProject_Project_Information_Form.docx",
+  },
+  {
+    name: "Project Specification Document",
     added: "",
     size: "",
     link: "",
   },
   {
-    name: "Project Specification Document Guideline",
-    added: "",
-    size: "",
-    link: "",
-  },
-  {
-    name: "Analysis and Requirements Report Guideline",
+    name: "Analysis and Requirements Report",
     added: "",
     size: "",
     link: "",

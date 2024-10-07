@@ -2,7 +2,6 @@ import { Box, Typography, Button, Stack, IconButton } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import PublicIcon from "@mui/icons-material/Public";
 
 import { teamMembers } from "../data/team-members";
 
@@ -17,11 +16,6 @@ const links = [
     link: `/#/logbooks?member=${teamMembers[0].name}`,
     icon: <LibraryBooksIcon />,
   },
-  {
-    text: "No-styled Website",
-    link: "/#/no-style",
-    icon: <PublicIcon />,
-  },
 ];
 
 const FeaturedLinks = () => {
@@ -29,8 +23,8 @@ const FeaturedLinks = () => {
     <Box
       sx={{
         margin: "auto",
-        paddingX: "20rem",
-        paddingBottom: "22rem",
+        paddingX: "20%",
+        paddingBottom: "22%",
         backgroundColor: "#F0F0F0",
       }}
     >

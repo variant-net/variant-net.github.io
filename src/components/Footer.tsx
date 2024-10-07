@@ -14,7 +14,7 @@ const Footer = () => {
       <Box mt={4} />
       <Grid container spacing={4} justifyContent="right">
         {/* Left section - Project description and social icons */}
-        <Grid item xs={12} md={3} mr={30}>
+        <Grid item xs={12} md={3} mr={"30%"}>
           <Typography variant="h5" color="textPrimary" fontWeight="bold">
             variant-net
           </Typography>
