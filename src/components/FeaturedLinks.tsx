@@ -2,6 +2,7 @@ import { Box, Typography, Button, Stack, IconButton } from "@mui/material";
 import { ArrowForward } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
+import CollectionsIcon from '@mui/icons-material/Collections';
 
 import { teamMembers } from "../data/team-members";
 
@@ -16,6 +17,11 @@ const links = [
     link: `/#/logbooks?member=${teamMembers[0].name}`,
     icon: <LibraryBooksIcon />,
   },
+  {
+    text: "Gallery",
+    link: "/#/gallery",
+    icon: <CollectionsIcon />,
+  }
 ];
 
 const FeaturedLinks = () => {

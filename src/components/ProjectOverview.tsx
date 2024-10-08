@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import dnaSVG from "../assets/svg/dna.svg";
 import About from "./About";
 
 const ProjectOverview: React.FC = () => {
@@ -37,18 +37,21 @@ const ProjectOverview: React.FC = () => {
           sx={{ color: "#333", padding: "30px", fontSize: 20 }} // dark text for readability
         >
           <strong>
-            variant-net is a tool designed to assist geneticists and medical
-            professionals in diagnosing genetic conditions by analyzing patient
-            DNA sequences alongside with phenotypic data. This project is part
-            of the CS491/2 Senior Design Project at Bilkent University, aiming
-            to provide an accessible and efficient AI-powered solution to
-            streamline genetic diagnosis.
+            <span style={{ color: "rgb(0, 128, 128)", fontStyle: "italic" }}>
+              variant-net
+            </span>{" "}
+            is an AI-powered platform designed to assist geneticists and medical
+            professionals in diagnosing genetic conditions. By analyzing patient
+            DNA sequences and provided phenotypic information, variant-net
+            identifies potential gene-disease associations, streamlining the
+            process of uncovering underlying genetic factors. Our goal is to
+            empower medical experts with cutting-edge tools that enhance
+            accuracy and efficiency in genetic diagnostics, contributing to the
+            advancement of personalized medication and treatment.
           </strong>
         </Typography>
-
-        {/* GitHub Icon Button */}
         <Box mt={3}>
-          <AutoAwesomeIcon fontSize="large" sx={{ color: "#008080" }} />
+          <img src={dnaSVG} width="50" height="50" alt="DNA strand" />
         </Box>
       </Box>
     </>

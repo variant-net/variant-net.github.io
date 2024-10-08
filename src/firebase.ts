@@ -1,7 +1,8 @@
 // src/firebase.ts
 import { initializeApp } from "firebase/app";
-import { getAuth, Auth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   /* Template config, replace with your own values */
@@ -18,7 +19,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth: Auth = getAuth(app);
+const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
-export { auth, db };
+export { auth, db, storage };

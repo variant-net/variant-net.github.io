@@ -4,9 +4,29 @@ import Table from "@mui/joy/Table";
 import IconButton from "@mui/joy/IconButton";
 import Box from "@mui/joy/Box";
 import GetAppIcon from "@mui/icons-material/GetApp"; // Download icon
-import { files } from "../data/files";
+import { storage } from "../firebase"; // Firebase storage instance
+import { ref, getDownloadURL } from "firebase/storage";
+import { files } from "../data/files"; // Assuming files data has 'firebasePath' for Firebase storage reference
 
 const Deliverables = () => {
+  // Function to download file from Firebase Storage
+  const handleDownload = async (firebasePath: string, fileName: string) => {
+    try {
+      const fileRef = ref(storage, firebasePath); // Reference to the file in Firebase Storage
+      const url = await getDownloadURL(fileRef); // Get the download URL
+      
+      // Create a hidden anchor tag to trigger the download
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName; // Set the file name for download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link); // Clean up the DOM
+    } catch (error) {
+      console.error("Error downloading the file:", error);
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -63,7 +83,7 @@ const Deliverables = () => {
               <TypographyOfJoy level="title-sm">Size</TypographyOfJoy>
             </th>
             <th style={{ textAlign: "right" }}>
-              <TypographyOfJoy level="title-sm">Download</TypographyOfJoy>
+              <TypographyOfJoy level="title-sm"></TypographyOfJoy>
             </th>
           </tr>
         </thead>
@@ -85,13 +105,11 @@ const Deliverables = () => {
                 <TypographyOfJoy level="body-sm">{file.size}</TypographyOfJoy>
               </td>
               <td style={{ textAlign: "right" }}>
-                {file.link && (
+                {file.firebasePath && (
                   <IconButton
                     variant="plain"
                     color="neutral"
-                    component="a"
-                    href={file.link}
-                    download={file.link}
+                    onClick={() => handleDownload(file.firebasePath, file.name)}
                   >
                     <GetAppIcon fontSize="small" />
                   </IconButton>

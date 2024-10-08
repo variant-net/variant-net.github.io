@@ -19,37 +19,37 @@ const colors = {
 const features = [
   {
     title: "Gene Variant Analysis",
-    icon: <ScienceIcon />,
+    icon: <ScienceIcon fontSize="inherit" />,
     description:
       "AI-powered analysis of genetic variants to aid in diagnosing rare genetic conditions.",
   },
   {
     title: "Phenotype Matching",
-    icon: <CompareArrowsIcon />,
+    icon: <CompareArrowsIcon fontSize="inherit" />,
     description:
       "Efficiently matches patient phenotypes to possible genetic disorders for accurate diagnosis.",
   },
   {
     title: "Data Visualization",
-    icon: <BarChartIcon />,
+    icon: <BarChartIcon fontSize="inherit" />,
     description:
       "Interactive data visualizations of gene mutations and their effects for better understanding.",
   },
   {
     title: "Clinical Decision Support",
-    icon: <MedicalServicesIcon />,
+    icon: <MedicalServicesIcon fontSize="inherit" />,
     description:
       "Provides recommendations and insights to assist medical professionals in making informed decisions.",
   },
   {
     title: "Automated Reporting",
-    icon: <DescriptionIcon />,
+    icon: <DescriptionIcon fontSize="inherit" />,
     description:
       "Generates detailed reports summarizing the results of genetic analyses for medical records.",
   },
   {
     title: "Gene-Condition Database",
-    icon: <StorageIcon />,
+    icon: <StorageIcon fontSize="inherit" />,
     description:
       "Access to a constantly updated database of genes and their associated conditions for reference.",
   },
@@ -83,7 +83,7 @@ const FeatureCards = () => {
                 padding: "20px",
                 height: "100%",
                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                border: "3px solid #f0f0f0", // Light gray border
+                border: "3px solid rgba(0, 128, 128, 0.7)", // Teal blue border
                 borderRadius: "12px", // Softer edges
                 boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
                 "&:hover": {

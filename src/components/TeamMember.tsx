@@ -9,7 +9,6 @@ import {
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useNavigate } from "react-router-dom";
 
 interface TeamMemberProps {
   name: string;
@@ -24,7 +23,6 @@ interface TeamMemberProps {
 
 const TeamMember: React.FC<TeamMemberProps> = ({
   name,
-  role,
   image,
   imagePosition,
   linkedInUrl,
@@ -32,15 +30,16 @@ const TeamMember: React.FC<TeamMemberProps> = ({
   personalWebsiteUrl,
   sx,
 }) => {
-  const navigate = useNavigate();
-
   return (
     <Card
+      /*
+      //This functionality has been removed because it causes a conflict with the GitHub and LinkedIn icons/links.
       onClick={() => {
         if (role === "student") {
           navigate(`/logbooks?member=${name}`);
         }
       }}
+      */
       sx={sx}
     >
       <CardMedia

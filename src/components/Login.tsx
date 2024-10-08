@@ -9,12 +9,16 @@ import {
   Button,
   Box,
   Paper,
+  Link,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { teal } from "@mui/material/colors";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // New state for error message
 
   const navigate = useNavigate();
 
@@ -25,11 +29,17 @@ const Login: React.FC = () => {
       navigate("/logbooks");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error("Login failed", error.message);
+        setErrorMessage(error.message); // Update error message state
+        console.error("Login failed:", error.message);
       } else {
-        console.error("Login failed", error);
+        setErrorMessage("An unknown error occurred."); // Fallback message
+        console.error("Login failed:", error);
       }
     }
+  };
+
+  const handleCloseSnackbar = () => {
+    setErrorMessage(null); // Clear the error message
   };
 
   return (
@@ -117,7 +127,26 @@ const Login: React.FC = () => {
             Having trouble logging in? Contact Deniz.
           </Typography>
         </Box>
+
+        <Box textAlign="center" marginTop={2}>
+          <Link href="/" underline="none">
+            <Box textAlign="center">
+              <Typography variant="body2">Return to Home Page</Typography>
+            </Box>
+          </Link>
+        </Box>
       </Paper>
+
+      {/* Snackbar for displaying error messages */}
+      <Snackbar
+        open={!!errorMessage}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert onClose={handleCloseSnackbar} severity="error">
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
