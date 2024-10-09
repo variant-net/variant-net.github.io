@@ -3,26 +3,25 @@
 This repository contains the code for the **variant-net** webpage, a senior design project of Bilkent University, hosted on GitHub Pages. The project is developed using **React** and **TypeScript** with **Vite**.
 
 ## Project Setup
-Make sure that npm is installed.
 
-> 1. **Install Dependencies**:
-> Run the following command to install project dependencies:
-> ```bash
-> npm install
-> ```
+1. **Install Dependencies**:
+Run the following command to install project dependencies:
+```bash
+npm install
+```
 
-> 2. **Run the Project Locally**:
-> After installing the dependencies, start the development server by executing:
-> ```bash
-> npm run dev
-> ```
-> This will launch the project in development mode.
+2. **Run the Project Locally**:
+After installing the dependencies, start the development server by executing:
+```bash
+npm run dev
+```
+This will launch the project in development mode.
 
-> 3. **Deploy to GitHub Pages**:
-> To deploy the latest changes to GitHub Pages, run the following command:
-> ```bash
-> npm run deploy
-> ```
+3. **Deploy to GitHub Pages**:
+To deploy the latest changes to GitHub Pages, run the following command:
+```bash
+npm run deploy
+```
 
 ## Firebase Setup
 1. **Firebase Configuration**:
