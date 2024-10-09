@@ -2,7 +2,7 @@
 
 This repository contains the code for the **variant-net** webpage, a senior design project of Bilkent University, hosted on GitHub Pages. The project is developed using **React** and **TypeScript** with **Vite**.
 
-## Project Setup
+## Project Setup
 
 1. **Install Dependencies**:
 Run the following command to install project dependencies:
