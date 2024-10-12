@@ -9,6 +9,7 @@ const teamMembers = [
   {
     name: "Ahmet Berke Gökmen",
     username: "berke.gokmen",
+    id: "",
     role: "student",
     image: Berke,
     linkedInUrl: "https://www.linkedin.com/in/berkegokmen/",
@@ -18,6 +19,7 @@ const teamMembers = [
   {
     name: "Mert Gençtürk",
     username: "mert.gencturk",
+    id: "",
     role: "student",
     image: Mert,
     linkedInUrl: "https://www.linkedin.com/in/mert-gençtürk-339864186/",
@@ -27,6 +29,7 @@ const teamMembers = [
   {
     name: "Arda İynem",
     username: "arda.iynem",
+    id: "",
     role: "student",
     image: Arda,
     imagePosition: "center",
@@ -37,6 +40,7 @@ const teamMembers = [
   {
     name: "Deniz Tuna Onguner",
     username: "tuna.onguner",
+    id: "22001788",
     role: "student",
     image: Deniz,
     imagePosition: "center",
@@ -47,6 +51,7 @@ const teamMembers = [
   {
     name: "Hasan Ege Tunç",
     username: "hasan.tunc",
+    id: "",
     role: "student",
     image: Ege,
     linkedInUrl: "",

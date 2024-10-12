@@ -16,12 +16,25 @@ import {
   CircularProgress,
   TextField,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+
 import jsPDF from "jspdf"; // For PDF export
 
+import "../assets/fonts/ProximaNova-Bold-normal.js";
+import "../assets/fonts/ProximaNova-BoldIt-normal.js";
+import "../assets/fonts/ProximaNova-Regular-normal.js";
+import "../assets/fonts/ProximaNova-RegularIt-normal.js";
+
+import bilkentLogo from "../assets/bg/ING-amblem-yazi.png"; // Bilkent logo
 import { teamMembers } from "../data/team-members";
 
 interface LogbookEntryProps {
@@ -42,6 +55,8 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
   const [editingEntryId, setEditingEntryId] = useState<string | null>(null);
   const [editedTitle, setEditedTitle] = useState<string>("");
   const [editedContent, setEditedContent] = useState<string>("");
+  const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
+  const [entryToDelete, setEntryToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchEntries = async () => {
@@ -105,32 +120,82 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
   };
 
   const handleExportPDF = () => {
-    const doc = new jsPDF();
-    const lineHeight = 8; // Reduced line height for smaller font size
-    const pageWidth = 210; // A4 page width in jsPDF (mm)
-    const marginRight = 10; // Right margin for the date
+    const generateCoverPage = (
+      bilkentLogo: string,
+      studentName: string,
+      studentID: string,
+      supervisorName: string = "A. Ercüment Çiçek"
+    ) => {
+      const doc = new jsPDF();
 
-    let yOffset = 40; // Initial vertical offset after header
+      doc.addImage(bilkentLogo, "PNG", 15, 20, 160, 34);
+
+      doc.setFont("ProximaNova-Regular", "normal");
+      doc.setFontSize(12);
+      doc.text("Department of Computer Engineering", 15, 70);
+      doc.text("Fall 2024 - Spring 2025", 15, 80);
+
+      // Project title
+      doc.setFont("ProximaNova-Bold", "normal");
+      doc.setFontSize(28);
+      doc.text("CS 491/492", 15, 115);
+      doc.text("Senior Design Project I/II", 15, 125);
+
+      doc.setFontSize(20);
+      doc.text("Student Logbook", 15, 155);
+
+      doc.setFontSize(17);
+      doc.setFont("ProximaNova-Regular", "normal");
+      doc.text(`${studentName}`, 15, 175);
+      doc.text(`Bilkent ID: ${studentID}`, 15, 185);
+
+      // Supervisor name
+      doc.setFontSize(15);
+
+      doc.setFont("ProximaNova-Bold", "normal");
+      doc.text("Project Name:", 15, 220);
+      doc.setFont("ProximaNova-Regular", "normal");
+      doc.text(" variant-net", doc.getTextWidth("Project Name:") + 17, 220);
+
+      doc.setFont("ProximaNova-Bold", "normal");
+      doc.text(`Supervisor:`, 15, 230);
+      doc.setFont("ProximaNova-Regular", "normal");
+      doc.text(` ${supervisorName}`, doc.getTextWidth("Supervisor:") + 17, 230);
+
+      // Footer with current date
+      const currentDate = new Date().toLocaleDateString();
+
+      doc.setFontSize(10);
+      doc.text(currentDate, 15, 270);
+      doc.text(
+        `This document is submitted to the Department of Computer Engineering of Bilkent University in partial fulfillment of`,
+        15,
+        277
+      );
+      doc.text(
+        `the CS 491/492, Senior Design Project I/II, requirement.`,
+        15,
+        284
+      );
+
+      return doc;
+    };
 
     const student = teamMembers.find(
       (member) => member.username === memberName
-    )!.name;
+    );
 
-    // Header section
-    doc.setFontSize(14); // Larger font for the university details
-    doc.setFont("helvetica", "bold");
-    doc.text("Bilkent University", pageWidth / 2, 10, { align: "center" });
-    doc.text("Department of Computer Engineering", pageWidth / 2, 18, {
-      align: "center",
-    });
-    doc.text("CS 491/492", pageWidth / 2, 26, { align: "center" });
-    doc.setFontSize(12); // Smaller font for student's name
-    doc.setFont("helvetica", "normal");
-    doc.text(`Logbook of ${student}`, pageWidth / 2, 34, {
-      align: "center",
-    });
+    const doc = generateCoverPage(bilkentLogo, student!.name, student!.id);
 
-    yOffset += lineHeight * 1.5;
+    const lineHeight = 8; // Reduced line height for smaller font size
+    const pageWidth = 210; // A4 page width in jsPDF (mm)
+    const marginRight = 10; // Right margin for the date
+    const contentWidth = 180; // Width for the content section
+
+    // Add a new page for the logbook entries
+    doc.addPage();
+
+    let yOffset = 20; // Reset yOffset for the logbook entries
 
     // Content section
     entries.forEach((entry) => {
@@ -140,23 +205,23 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
 
       // Add title
       doc.setFontSize(12); // Title font size
-      doc.setTextColor(0, 0, 0); // Black color for title
-      doc.setFont("helvetica", "bold");
+      doc.setTextColor(59, 59, 59); // Black color for title
+      doc.setFont("ProximaNova-Bold", "normal");
       doc.text(title, 10, yOffset);
 
       // Add date (smaller and gray)
       doc.setFontSize(10);
       doc.setTextColor(150, 150, 150); // Gray color for date
-      doc.setFont("helvetica", "normal");
+      doc.setFont("ProximaNova-RegularIt", "normal");
       doc.text(date, pageWidth - marginRight - doc.getTextWidth(date), yOffset);
 
       yOffset += lineHeight;
 
-      // Add content with word wrapping (max width of 180)
-      const splitContent = doc.splitTextToSize(content, 180);
+      // Add content with manual justification
+      const splitContent = doc.splitTextToSize(content, contentWidth);
       doc.setFontSize(10); // Content font size
-      doc.setTextColor(80, 80, 80); // Dark gray for content
-      doc.setFont("helvetica", "normal");
+      doc.setTextColor(79, 79, 79); // Dark gray for content
+      doc.setFont("ProximaNova-Regular", "normal");
 
       splitContent.forEach((line: string) => {
         doc.text(line, 10, yOffset);
@@ -165,7 +230,7 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
         // Check if we need to add a new page
         if (yOffset > 280) {
           doc.addPage();
-          yOffset = 10; // Reset yOffset for the new page
+          yOffset = 20; // Reset yOffset for the new page
         }
       });
 
@@ -174,11 +239,21 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
       // Add new page if content overflows
       if (yOffset > 280) {
         doc.addPage();
-        yOffset = 10;
+        yOffset = 20;
       }
     });
 
-    doc.save(`${student}'s Logbook.pdf`);
+    doc.save(`CS491-2_${student!.id}_Logbook.pdf`);
+  };
+
+  const openDeleteConfirmation = (id: string) => {
+    setEntryToDelete(id);
+    setDeleteConfirmationOpen(true);
+  };
+
+  const closeDeleteConfirmation = () => {
+    setEntryToDelete(null);
+    setDeleteConfirmationOpen(false);
   };
 
   if (loading) {
@@ -278,10 +353,7 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
                       <>
                         <Button
                           startIcon={<DeleteForeverIcon />}
-                          onClick={async () => {
-                            await handleDelete(entry.id);
-                            reset();
-                          }}
+                          onClick={() => openDeleteConfirmation(entry.id)}
                           sx={{
                             position: "absolute",
                             right: 100,
@@ -321,7 +393,45 @@ const LogbookEntries: React.FC<LogbookEntryProps> = ({ memberName, reset }) => {
           </Typography>
         )}
       </Box>
-
+      {/* Delete Confirmation Dialog */}
+      <Dialog open={deleteConfirmationOpen} onClose={closeDeleteConfirmation}>
+        <DialogTitle>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <WarningAmberIcon sx={{ color: "orange", mr: 1 }} />
+            <Typography variant="h6" sx={{ color: "orange", mt: 0.5 }}>
+              Delete Entry
+            </Typography>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Do you really want to delete this entry? This action cannot be
+            undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeDeleteConfirmation} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={async () => {
+              await handleDelete(entryToDelete!);
+              reset();
+            }}
+            color="error"
+            sx={{
+              mr: 1.5
+            }}
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       {/* Export as PDF Button */}
       {memberName === auth.currentUser?.email?.split("@")[0] && (
         <Button

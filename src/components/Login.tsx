@@ -24,17 +24,13 @@ const Login: React.FC = () => {
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/logbooks");
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setErrorMessage(error.message); // Update error message state
-        console.error("Login failed:", error.message);
-      } else {
-        setErrorMessage("An unknown error occurred."); // Fallback message
-        console.error("Login failed:", error);
-      }
+    } catch (error) {
+      setErrorMessage("Authentication failed. Please check your credentials.");
+      console.error("Login failed:", error);
     }
   };
 
@@ -124,7 +120,7 @@ const Login: React.FC = () => {
 
         <Box textAlign="center" marginTop={5} marginBottom={1}>
           <Typography variant="body2" sx={{ color: "#808080" }}>
-            Having trouble logging in? Contact Deniz.
+            Having trouble logging in? Contact with Deniz.
           </Typography>
         </Box>
 
